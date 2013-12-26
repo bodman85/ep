@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:body>
+	<ui:composition>
+		<h:form>
+			<div id="headerleft">
+				<h:commandLink action="pages/default.jsf">
+					<h:graphicImage library="img" name="logo.png" />
+				</h:commandLink>
+			</div>
+			<div id="headerright">
+				<div id="headerright_inner1">
+					<h:graphicImage library="img" name="phone.png" />
+					<br />
+					<h:outputText value="#{initParam['phone']}" escape="false" />
+				</div>
+				<div id="headerright_inner2">
+					<h:graphicImage library="img" name="open.png" />
+					<br />
+					<h:outputText value="#{initParam['working_hours']}" escape="false" />
+				</div>
+			</div>
+		</h:form>
+	</ui:composition>
+</h:body>
+</html>

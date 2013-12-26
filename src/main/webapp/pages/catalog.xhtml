@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Elite Perfumes</title>
+</h:head>
+<h:body>
+	<h:form>
+		<p:dataGrid id="products" value="#{productMBean.getProducts()}"
+			var="product" columns="3" rows="12" paginator="true"
+			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="9,12,15">
+
+			<p:panel header="#{product.name}" style="text-align:center">
+				<h:panelGrid columns="1" style="width:100%">
+					<!-- 
+					<p:graphicImage value="/images/cars/#{car.manufacturer}.jpg" />*/
+				 -->
+					<h:outputText value="#{product.description}" />
+					<h:outputText value="#{product.price}" />
+				</h:panelGrid>
+			</p:panel>
+
+		</p:dataGrid>
+	</h:form>
+</h:body>
+</html>
