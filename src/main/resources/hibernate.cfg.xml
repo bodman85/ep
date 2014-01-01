@@ -15,7 +15,7 @@
 		<property name="hibernate.connection.username">admin4MkgCk1</property>
 		<property name="hibernate.connection.password">Zg7InKVVNHVG</property>
 		-->
-		<property name="hibernate.connection.url">jdbc:mysql://${OPENSHIFT_MYSQL_DB_HOST}:${OPENSHIFT_MYSQL_DB_PORT}/${OPENSHIFT_APP_NAME}</property>
+		<property name="hibernate.connection.url">jdbc:mysql://${env.OPENSHIFT_MYSQL_DB_HOST}:${env.OPENSHIFT_MYSQL_DB_PORT}/${env.OPENSHIFT_APP_NAME}</property>
 		<property name="hibernate.connection.username">admin4MkgCk1</property>
 		<property name="hibernate.connection.password">Zg7InKVVNHVG</property>
 		
