@@ -2,7 +2,7 @@ html {
 	margin: 0;
 	padding: 0;
 	height: 100%;
-	background-image: url('../img/paris_background.jpg');
+	background-image: URL("../resources/img/paris_background.jpg");
 	background-repeat: no-repeat;
 	background-position: center;
 	background-attachment: fixed;
