@@ -21,6 +21,7 @@ public class HibernateUtil {
 					System.getenv("OPENSHIFT_MYSQL_DB_URL") + "/"
 							+ System.getenv("OPENSHIFT_APP_NAME"));
 			cfg.setProperty("dialect", "org.hibernate.dialect.MySQLDialect");
+			cfg.addResource("hbm/product.hbm.xml");
 			sessionFactory = cfg.buildSessionFactory();
 		}
 
