@@ -15,6 +15,9 @@
 		<property name="description">
 			<column name="DESCRIPTION" />
 		</property>
+		<property name="imageFile">
+			<column name="IMAGE_FILE" />
+		</property>
 		<property name="price">
 			<column name="PRICE" />
 		</property>
