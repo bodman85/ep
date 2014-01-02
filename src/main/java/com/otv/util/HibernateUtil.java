@@ -15,9 +15,14 @@ public class HibernateUtil {
 
 	public static SessionFactory getSessionFactory() {
 		if (sessionFactory == null) {
-			sessionFactory = new Configuration().configure()
-					.buildSessionFactory();
+			Configuration cfg = new Configuration();
+			cfg.setProperty(
+					"hibernate.connection.url",
+					System.getenv("OPENSHIFT_MYSQL_DB_URL") + "/"
+							+ System.getenv("OPENSHIFT_APP_NAME"));
+			sessionFactory = cfg.buildSessionFactory();
 		}
+
 		return sessionFactory;
 	}
 

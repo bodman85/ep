@@ -18,11 +18,11 @@
 		<property name="hibernate.connection.url">jdbc:mysql://${env.OPENSHIFT_MYSQL_DB_HOST}:${env.OPENSHIFT_MYSQL_DB_PORT}/${env.OPENSHIFT_APP_NAME}</property>
 		<property name="hibernate.connection.username">admin4MkgCk1</property>
 		<property name="hibernate.connection.password">Zg7InKVVNHVG</property>
-		--> 
+		
 		<property name="hibernate.connection.url">jdbc:mysql://127.13.111.130:3306/ep</property>
 		<property name="hibernate.connection.username">admin4MkgCk1</property>
 		<property name="hibernate.connection.password">Zg7InKVVNHVG</property>
-		
+		--> 
 		<property name="hibernate.connection.pool_size">10</property>
 		<property name="show_sql">true</property>
 		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
