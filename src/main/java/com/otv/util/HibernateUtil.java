@@ -16,12 +16,15 @@ public class HibernateUtil {
 	public static SessionFactory getSessionFactory() {
 		if (sessionFactory == null) {
 			Configuration cfg = new Configuration();
+		/*
 			cfg.setProperty(
 					"hibernate.connection.url",
 					System.getenv("OPENSHIFT_MYSQL_DB_URL") + "/"
 							+ System.getenv("OPENSHIFT_APP_NAME"));
 			cfg.setProperty("dialect", "org.hibernate.dialect.MySQLDialect");
 			cfg.addResource("hbm/product.hbm.xml");
+		*/	
+			cfg.configure();
 			sessionFactory = cfg.buildSessionFactory();
 		}
 
