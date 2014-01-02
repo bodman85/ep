@@ -1,5 +1,7 @@
 package com.otv.hbm;
 
+import java.math.BigDecimal;
+
 /**
  * @author ep.kiev.ua
  * @since 21 Dec 2013
@@ -11,7 +13,8 @@ public class Product {
 	private int id;
 	private String name;
 	private String description;
-	private double price;
+	private String imageFile;
+	private BigDecimal price;
 
 	public int getId() {
 		return id;
@@ -37,11 +40,19 @@ public class Product {
 		this.description = description;
 	}
 	
-	public Double getPrice() {
+	public String getImageFile() {
+		return imageFile;
+	}
+
+	public void setImageFile(String imageFile) {
+		this.imageFile = imageFile;
+	}
+	
+	public BigDecimal getPrice() {
 		return price;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
 
@@ -51,6 +62,7 @@ public class Product {
 		strBuff.append("id : ").append(id);
 		strBuff.append(", name : ").append(name);
 		strBuff.append(", description : ").append(description);
+		strBuff.append(", image file : ").append(imageFile);
 		strBuff.append(", price : ").append(price);
 		return strBuff.toString();
 	}

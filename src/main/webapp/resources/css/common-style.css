@@ -20,8 +20,8 @@ img {
 }
 
 .ui-widget-content {
-    opacity: 0.80 !important;	
-    /*filter: alpha(opacity=80);IE8 */
+    opacity: 0.95;	
+    /*filter: alpha(opacity=95);IE8 */
 }
 
 #wrap {
@@ -40,6 +40,8 @@ img {
 #headerleft {
 	/*border: 1px red solid;*/
 	display: inline-block;
+	zoom: 1;
+    *display: inline;
 	width: 32%;
 	height: 100%;
 	vertical-align: middle;
@@ -52,6 +54,8 @@ img {
 #headerright {
 	/*border: 1px blue solid;*/
 	display: inline-block;
+	zoom: 1;
+    *display: inline;
 	padding-top:2%;
 	width: 67%;
 	height: 100%;
@@ -62,6 +66,8 @@ img {
 	/*border: 1px red solid;*/
 	width: 27%;
 	display: inline-block;
+	zoom: 1;
+    *display: inline;
 	text-align: center;
 	color:#000080;
 	font-size: 18pt;
@@ -71,6 +77,8 @@ img {
 	/*border: 1px green solid;*/
 	width: 27%;
 	display: inline-block;
+	zoom: 1;
+    *display: inline;
 	text-align: center;
 	color:#000080;
 	font-size: 18pt;

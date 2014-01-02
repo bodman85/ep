@@ -1,6 +1,7 @@
 package com.otv;
  
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.List;
  
 import org.apache.log4j.Logger;
@@ -27,7 +28,7 @@ public class ProductManagedBean implements Serializable{
 	private int id;
 	private String name;
 	private String description;
-	private double price;
+	private BigDecimal price;
 	
 	private String message;
  
@@ -55,11 +56,11 @@ public class ProductManagedBean implements Serializable{
 		this.description = description;
 	}
 	
-	public Double getPrice() {
+	public BigDecimal getPrice() {
 		return price;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
 
@@ -115,6 +116,6 @@ public class ProductManagedBean implements Serializable{
     public void reset() {
         this.setName("");
         this.setDescription("");
-        this.setPrice(0.00);
+        this.setPrice(new BigDecimal(0.00));
     }
 }
