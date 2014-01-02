@@ -18,9 +18,10 @@ public class HibernateUtil {
 			Configuration cfg = new Configuration();
 			cfg.configure();
 			cfg.setProperty(
-					"hibernate.connection.url", "jdbc:"+
-					System.getenv("OPENSHIFT_MYSQL_DB_URL")
-							+ System.getenv("OPENSHIFT_APP_NAME"));
+					"hibernate.connection.url", "jdbc:mysql:"+
+					System.getenv("OPENSHIFT_MYSQL_DB_HOST")+":"+
+					System.getenv("OPENSHIFT_MYSQL_DB_PORT")+"/"+
+					System.getenv("OPENSHIFT_APP_NAME"));
 			sessionFactory = cfg.buildSessionFactory();
 		}
 
