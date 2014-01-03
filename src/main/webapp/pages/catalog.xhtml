@@ -18,10 +18,32 @@
 					<h:graphicImage
 						value="#{cfg.product_image_path}#{product.imageFile}" />
 					<h:outputText value="#{product.price} #{cfg.currency}" />
+					
+					<p:commandLink update=":form:productDetail"
+						oncomplete="PF('productDialog').show()" title="View Detail">
+						<h:outputText styleClass="ui-icon ui-icon-search"
+							style="margin:0 auto;" />
+						<f:setPropertyActionListener value="#{product}"
+							target="#{productMBean.selectedProduct}" />
+					</p:commandLink>
+					
 				</h:panelGrid>
 			</p:panel>
-
 		</p:dataGrid>
+
+		<p:dialog header="#{productMBean.selectedProduct.name}" widgetVar="productDialog"
+			modal="true">
+			<p:outputPanel id="productDetail" style="text-align:center;">
+
+				<p:graphicImage
+					value="#{cfg.product_image_path}#{product.imageFile}" />
+
+				<h:panelGrid columns="2" cellpadding="5">
+					<h:outputText value="#{productMBean.selectedProduct.description}" />
+					<h:outputText value="#{productMBean.selectedProduct.price} #{cfg.currency}" />
+				</h:panelGrid>
+			</p:outputPanel>
+		</p:dialog>
 	</h:form>
 </h:body>
 </html>

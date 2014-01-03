@@ -9,7 +9,6 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import com.otv.hbm.Product;
-import com.otv.hbm.User;
 import com.otv.util.HibernateUtil;
  
 /**
@@ -28,7 +27,10 @@ public class ProductManagedBean implements Serializable{
 	private int id;
 	private String name;
 	private String description;
+	private String imageFile;
 	private BigDecimal price;
+	
+	private Product selectedProduct;
 	
 	private String message;
  
@@ -56,6 +58,14 @@ public class ProductManagedBean implements Serializable{
 		this.description = description;
 	}
 	
+	public String getImageFile() {
+		return imageFile;
+	}
+
+	public void setImageFile(String imageFile) {
+		this.imageFile = imageFile;
+	}
+	
 	public BigDecimal getPrice() {
 		return price;
 	}
@@ -64,6 +74,14 @@ public class ProductManagedBean implements Serializable{
 		this.price = price;
 	}
 
+    public Product getSelectedProduct() {  
+        return selectedProduct;  
+    }  
+  
+    public void setSelectedProduct(Product selectedProduct) {  
+        this.selectedProduct = selectedProduct;  
+    } 
+	
     public String getMessage() {
         StringBuffer strBuff = new StringBuffer();
 		strBuff.append("id : ").append(id);
@@ -85,6 +103,7 @@ public class ProductManagedBean implements Serializable{
         Product product = new Product();
         product.setName(this.getName());
         product.setDescription(this.getDescription());
+        product.setImageFile(this.getImageFile());
         product.setPrice(this.getPrice());
  
         Transaction tx = null;
@@ -116,6 +135,7 @@ public class ProductManagedBean implements Serializable{
     public void reset() {
         this.setName("");
         this.setDescription("");
+        this.setImageFile("");
         this.setPrice(new BigDecimal(0.00));
     }
 }
