@@ -21,7 +21,7 @@
 						<p:graphicImage
 							value="#{cfg.product_image_path}#{product.imageFile}" />
 						<f:setPropertyActionListener
-							target="#{productMBean.selectedProduct}" value="#{product}" />
+							target="#{productMBean.selectedProduct.description}" value="123" />
 					</p:commandLink>
 					<h:outputText value="#{product.price} #{cfg.currency}" />
 				</h:panelGrid>
