@@ -16,7 +16,7 @@
 			rowsPerPageTemplate="9,12,15">
 			<p:panel header="#{product.name}" style="text-align:center">
 				<h:panelGrid columns="1" style="width:100%">
-					<p:commandLink update=":tabView:modalDialog"
+					<p:commandLink update=":tabView:productDetail"
 						oncomplete="PF('productDialog').show()" title="Подробнее">
 						<p:graphicImage
 							value="#{cfg.product_image_path}#{product.imageFile}" />
