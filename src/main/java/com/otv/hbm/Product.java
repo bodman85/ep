@@ -67,4 +67,19 @@ public class Product implements Serializable{
 		strBuff.append(", price : ").append(price);
 		return strBuff.toString();
 	}
+	
+	@Override
+	public int hashCode() {
+	    return id;
+	}
+
+	@Override
+	public boolean equals(final Object obj) {
+	    if (obj instanceof Product) {
+	        Product item = (Product) obj;
+	        return item.getId()==getId();
+	    }
+
+	    return false;
+	}
 }
