@@ -24,6 +24,12 @@ img {
     /*filter: alpha(opacity=95);IE8 */
 }
 
+.ui-outputpanel.ui-widget
+{
+	text-align: justify;
+	font-size:95% !important;
+}
+
 #wrap {
 	/*width: 1280px;*/
     margin:0 auto;

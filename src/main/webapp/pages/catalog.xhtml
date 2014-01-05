@@ -2,48 +2,49 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<h:outputStylesheet library="css" name="common-style.css" />
 	<title>Elite Perfumes</title>
 </h:head>
 <h:body>
-	<h:form>
-		<p:dataGrid id="products" value="#{productMBean.getProducts()}"
-			var="product" columns="3" rows="12" paginator="true"
+	<h:form id="form">
+
+		<p:dataGrid var="product" value="#{productMBean.getProducts()}"
+			columns="3" rows="12" paginator="true"
 			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 			rowsPerPageTemplate="9,12,15">
 			<p:panel header="#{product.name}" style="text-align:center">
 				<h:panelGrid columns="1" style="width:100%">
-					<h:graphicImage
-						value="#{cfg.product_image_path}#{product.imageFile}" />
-					<h:outputText value="#{product.price} #{cfg.currency}" />
-					
-					<p:commandLink update=":form:productDetail"
-						oncomplete="PF('productDialog').show()" title="View Detail">
-						<h:outputText styleClass="ui-icon ui-icon-search"
-							style="margin:0 auto;" />
-						<f:setPropertyActionListener value="#{product}"
-							target="#{productMBean.selectedProduct}" />
+					<p:commandLink update=":tabView:form:modalDialog"
+						oncomplete="PF('productDialog').show()" title="Подробнее">
+						<h:graphicImage
+							value="#{cfg.product_image_path}#{product.imageFile}" />
+						<f:setPropertyActionListener
+							target="#{productMBean.selectedProduct}" value="#{product}" />
 					</p:commandLink>
-					
+					<h:outputText value="#{product.price} #{cfg.currency}" />
 				</h:panelGrid>
 			</p:panel>
 		</p:dataGrid>
 
-		<p:dialog header="#{productMBean.selectedProduct.name}" widgetVar="productDialog"
-			modal="true">
-			<p:outputPanel id="productDetail" style="text-align:center;">
-
-				<p:graphicImage
-					value="#{cfg.product_image_path}#{product.imageFile}" />
-
+		<p:dialog id="modalDialog"
+			header="#{productMBean.selectedProduct.name}"
+			widgetVar="productDialog" modal="true" height="auto"
+			appendTo="@(body)">
+			<p:outputPanel id="productDetail">
 				<h:panelGrid columns="2" cellpadding="5">
+					<h:graphicImage
+						value="#{cfg.product_image_path}#{productMBean.selectedProduct.imageFile}" />
 					<h:outputText value="#{productMBean.selectedProduct.description}" />
-					<h:outputText value="#{productMBean.selectedProduct.price} #{cfg.currency}" />
+					<h:outputText
+						value="#{productMBean.selectedProduct.price} #{cfg.currency}" />
 				</h:panelGrid>
 			</p:outputPanel>
 		</p:dialog>
 	</h:form>
+
 </h:body>
 </html>
