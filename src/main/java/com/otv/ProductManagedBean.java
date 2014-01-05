@@ -3,7 +3,7 @@ package com.otv;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
- 
+
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -33,7 +33,7 @@ public class ProductManagedBean implements Serializable{
 	private Product selectedProduct;
 	
 	private String message;
- 
+	
 	public int getId() {
 		return id;
 	}

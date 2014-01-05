@@ -1,5 +1,6 @@
 package com.otv.hbm;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
@@ -8,8 +9,8 @@ import java.math.BigDecimal;
  * @version 1.0.0
  * 
  */
-public class Product {
-
+public class Product implements Serializable{
+	private static final long serialVersionUID = 891614361127303607L;
 	private int id;
 	private String name;
 	private String description;
