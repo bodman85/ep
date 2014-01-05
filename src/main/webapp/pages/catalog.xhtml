@@ -20,7 +20,7 @@
 				<h:panelGrid columns="1" style="width:100%">
 					<p:commandLink update=":tabView:form:modalDialog"
 						oncomplete="PF('productDialog').show()" title="Подробнее">
-						<h:graphicImage
+						<p:graphicImage
 							value="#{cfg.product_image_path}#{product.imageFile}" />
 						<f:setPropertyActionListener
 							target="#{productMBean.selectedProduct}" value="#{product}" />
