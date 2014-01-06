@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
@@ -22,7 +22,7 @@ import com.otv.util.HibernateUtil;
  */
 
 @ManagedBean(name="productMBean")
-@SessionScoped
+@ViewScoped
 public class ProductManagedBean implements Serializable{
  
 	private static final long serialVersionUID = 2781944169997762978L;
