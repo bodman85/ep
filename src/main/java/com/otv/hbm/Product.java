@@ -3,12 +3,20 @@ package com.otv.hbm;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+
 /**
  * @author ep.kiev.ua
  * @since 21 Dec 2013
  * @version 1.0.0
  * 
  */
+@Entity
+@Table(name = "PRODUCT")
 public class Product implements Serializable{
 	private static final long serialVersionUID = 891614361127303607L;
 	private int id;
@@ -17,6 +25,8 @@ public class Product implements Serializable{
 	private String imageFile;
 	private BigDecimal price;
 
+	@Id
+	@Column(name = "ID", unique = true, nullable = false)
 	public int getId() {
 		return id;
 	}
@@ -25,6 +35,7 @@ public class Product implements Serializable{
 		this.id = id;
 	}
 
+	@Column(name = "NAME")
 	public String getName() {
 		return name;
 	}
@@ -33,6 +44,7 @@ public class Product implements Serializable{
 		this.name = name;
 	}
 
+	@Column(name = "DESCRIPTION")
 	public String getDescription() {
 		return description;
 	}
@@ -41,6 +53,7 @@ public class Product implements Serializable{
 		this.description = description;
 	}
 	
+	@Column(name = "IMAGE_FILE")
 	public String getImageFile() {
 		return imageFile;
 	}
@@ -49,6 +62,7 @@ public class Product implements Serializable{
 		this.imageFile = imageFile;
 	}
 	
+	@Column(name = "PRICE")
 	public BigDecimal getPrice() {
 		return price;
 	}
