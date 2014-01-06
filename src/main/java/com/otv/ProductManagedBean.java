@@ -86,6 +86,7 @@ public class ProductManagedBean implements Serializable{
   
     public void setSelectedProduct(Product selectedProduct) {  
         this.selectedProduct = selectedProduct;  
+        log.debug("Product selected : " + selectedProduct);
     } 
 	
     public String getMessage() {
