@@ -16,7 +16,7 @@
 		rowsPerPageTemplate="9,12,15">
 		<p:panel header="#{product.name}" style="text-align:center">
 			<h:panelGrid columns="1" style="width:100%">
-				<p:commandLink update=":form:tabView:modalDialog"
+				<p:commandLink update=":tabView:productDialog"
 					oncomplete="PF('productDialog').show()" title="Подробнее">
 					<p:graphicImage
 						value="#{cfg.product_image_path}#{product.imageFile}" />
@@ -30,11 +30,11 @@
 		</p:panel>
 	</p:dataGrid>
 
-	<p:dialog id="modalDialog"
+	<p:dialog id="productDialog"
 		header="#{productMBean.selectedProduct.name}"
 		widgetVar="productDialog" modal="true" height="auto"
 		appendTo="@(body)">
-
+	<h:form id="formDialog">
 		<p:outputPanel id="productDetail">
 			<h:panelGrid columns="2" cellpadding="5">
 				<h:graphicImage
@@ -44,7 +44,7 @@
 					value="#{productMBean.selectedProduct.price} #{cfg.currency}" />
 			</h:panelGrid>
 		</p:outputPanel>
-
+	</h:form>
 	</p:dialog>
 </h:body>
 </html>

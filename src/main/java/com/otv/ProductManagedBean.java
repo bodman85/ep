@@ -40,6 +40,10 @@ public class ProductManagedBean implements Serializable{
 	
 	private String message;
 	
+	public ProductManagedBean(){
+		
+	}
+	
 	public int getId() {
 		return id;
 	}
