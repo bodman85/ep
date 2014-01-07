@@ -23,7 +23,7 @@
                 <p:commandLink update=":tabView:form:carDetail" oncomplete="PF('carDialog').show()" title="View Detail">  
                     <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />   
                     <f:setPropertyActionListener value="#{car}"   
-                            target="#{tableBean.selectedCar}" />  
+                            target="#{tableBean.selectedCar}" process="@this"/>  
                 </p:commandLink>  
             </h:panelGrid>  
         </p:panel>  
