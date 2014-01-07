@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns:h="http://java.sun.com/jsf/html">
+<html xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Elite Perfumes</title>
@@ -10,30 +12,65 @@
 	<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 		xmlns:p="http://primefaces.org/ui"
 		xmlns:ui="http://java.sun.com/jsf/facelets">
-			<p:tabView id="tabView" effect="fade" effectDuration="normal"
-				dynamic="false" cache="true">
+		<p:tabView id="tabView" effect="fade" effectDuration="normal"
+			dynamic="false" cache="true">
 
-				<p:tab id="home" title="Главная" icon="ui-icon-home">
-					<ui:include src="/pages/home.xhtml" />
-				</p:tab>
+			<p:tab id="home" title="Главная" icon="ui-icon-home">
+				<ui:include src="/pages/home.xhtml" />
+			</p:tab>
 
-				<p:tab id="catalog" title="Каталог" icon="ui-icon-search">
-					<ui:include src="/pages/catalog.xhtml" />
-				</p:tab>
+			<p:tab id="catalog" title="Каталог" icon="ui-icon-search">
+				<p:dataGrid var="product" value="#{productMBean.getProducts()}"
+					columns="3" rows="12" paginator="true"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="9,12,15">
+					<p:panel header="#{product.name}" style="text-align:center">
+						<h:panelGrid columns="1" style="width:100%">
+							<p:commandLink update=":tabView:modalDialog"
+								oncomplete="PF('productDialog').show()" title="Подробнее">
+								<p:graphicImage
+									value="#{cfg.product_image_path}#{product.imageFile}" />
+								<h:outputText styleClass="ui-icon ui-icon-search"
+									style="margin:0 auto;" />
+								<f:setPropertyActionListener
+									target="#{productMBean.selectedProduct}" value="#{product}" />
+							</p:commandLink>
+							<h:outputText value="#{product.price} #{cfg.currency}" />
+						</h:panelGrid>
+					</p:panel>
+				</p:dataGrid>
+				<p:dialog id="modalDialog"
+					header="#{productMBean.selectedProduct.name}"
+					widgetVar="productDialog" modal="true" height="auto"
+					appendTo="@(body)">
+					<h:form id="dialogForm">
+						<p:outputPanel id="productDetail">
+							<h:panelGrid columns="2" cellpadding="5">
+								<p:graphicImage
+									value="#{cfg.product_image_path}#{productMBean.selectedProduct.imageFile}" />
+								<h:outputText
+									value="#{productMBean.selectedProduct.description}" />
+								<h:outputText
+									value="#{productMBean.selectedProduct.price} #{cfg.currency}" />
+							</h:panelGrid>
+						</p:outputPanel>
+					</h:form>
+				</p:dialog>
+			</p:tab>
 
-				<p:tab id="actions" title="Акции" icon="ui-icon-star">
-					<ui:include src="/pages/actions.xhtml" />
-				</p:tab>
+			<p:tab id="actions" title="Акции" icon="ui-icon-star">
+				<ui:include src="/pages/actions.xhtml" />
+			</p:tab>
 
-				<p:tab id="newItems" title="Новинки" icon="ui-icon-calendar">
+			<p:tab id="newItems" title="Новинки" icon="ui-icon-calendar">
 
-				</p:tab>
+			</p:tab>
 
-				<p:tab id="about" title="О нас" icon="ui-icon-person">
+			<p:tab id="about" title="О нас" icon="ui-icon-person">
 
-				</p:tab>
+			</p:tab>
 
-			</p:tabView>
+		</p:tabView>
 	</ui:composition>
 </h:body>
 </html>

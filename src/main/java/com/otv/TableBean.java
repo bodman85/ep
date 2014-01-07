@@ -6,10 +6,12 @@ import java.util.List;
 import java.util.UUID;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 import com.otv.hbm.Car;
 
 @ManagedBean(name="tableBean")
+@SessionScoped
 public class TableBean implements Serializable {  
     
     /**
