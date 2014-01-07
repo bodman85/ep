@@ -140,7 +140,7 @@ public class ProductManagedBean implements Serializable{
     public List<Product> getProducts() {
         Session session = HibernateUtil.getSessionFactory().openSession();
         List<Product>  productList = session.createCriteria(Product.class).list();
-        log.debug("Total number of products fetched: " + productList.size());
+        //log.debug("Total number of products fetched: " + productList.size());
         return productList;
     }
     
