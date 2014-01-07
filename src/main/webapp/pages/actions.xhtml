@@ -1,15 +1,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
 	<title>Welcome to JSF_PrimeFaces_Hibernate Project</title>
 </h:head>
 <body>
-	<ui:composition xmlns="http://www.w3.org/1999/xhtml"
-		xmlns:p="http://primefaces.org/ui"
-		xmlns:ui="http://java.sun.com/jsf/facelets">
+	<ui:composition>
 		<h:form id="form">
 
 			<p:dataGrid var="car" value="#{tableBean.cars}" columns="3" rows="12"
