@@ -10,41 +10,44 @@
 	<title>Elite Perfumes</title>
 </h:head>
 <h:body>
-	<p:dataGrid var="product" value="#{productMBean.getProducts()}"
-		columns="3" rows="12" paginator="true"
-		paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-		rowsPerPageTemplate="9,12,15">
-		<p:panel header="#{product.name}" style="text-align:center">
-			<h:panelGrid columns="1" style="width:100%">
-				<p:commandLink update=":modalDialog"
-					oncomplete="PF('productDialog').show()" title="Подробнее"
-					process="@this">
-					<p:graphicImage
-						value="#{cfg.product_image_path}#{product.imageFile}" />
-					<h:outputText styleClass="ui-icon ui-icon-search"
-						style="margin:0 auto;" />
-					<f:setPropertyActionListener
-						target="#{productMBean.selectedProduct}" value="#{product}" />
-				</p:commandLink>
-				<h:outputText value="#{product.price} #{cfg.currency}" />
-			</h:panelGrid>
-		</p:panel>
-	</p:dataGrid>
-	<p:dialog id="modalDialog"
-		header="#{productMBean.selectedProduct.name}"
-		widgetVar="productDialog" modal="true" height="auto"
-		appendTo="@(body)">
-		<h:form id="formDialog">
-			<p:outputPanel id="productDetail">
-				<h:panelGrid columns="2" cellpadding="5">
-					<p:graphicImage
-						value="#{cfg.product_image_path}#{productMBean.selectedProduct.imageFile}" />
-					<h:outputText value="#{productMBean.selectedProduct.description}" />
-					<h:outputText
-						value="#{productMBean.selectedProduct.price} #{cfg.currency}" />
+	<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:p="http://primefaces.org/ui"
+		xmlns:ui="http://java.sun.com/jsf/facelets">
+		<p:dataGrid var="product" value="#{productMBean.getProducts()}"
+			columns="3" rows="12" paginator="true"
+			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="9,12,15">
+			<p:panel header="#{product.name}" style="text-align:center">
+				<h:panelGrid columns="1" style="width:100%">
+					<p:commandLink update=":tabView:modalDialog"
+						oncomplete="PF('productDialog').show()" title="Подробнее">
+						<p:graphicImage
+							value="#{cfg.product_image_path}#{product.imageFile}" />
+						<h:outputText styleClass="ui-icon ui-icon-search"
+							style="margin:0 auto;" />
+						<f:setPropertyActionListener
+							target="#{productMBean.selectedProduct}" value="#{product}" />
+					</p:commandLink>
+					<h:outputText value="#{product.price} #{cfg.currency}" />
 				</h:panelGrid>
-			</p:outputPanel>
-		</h:form>
-	</p:dialog>
+			</p:panel>
+		</p:dataGrid>
+		<p:dialog id="modalDialog"
+			header="#{productMBean.selectedProduct.name}"
+			widgetVar="productDialog" modal="true" height="auto"
+			appendTo="@(body)">
+			<h:form id="dialogForm">
+				<p:outputPanel id="productDetail">
+					<h:panelGrid columns="2" cellpadding="5">
+						<p:graphicImage
+							value="#{cfg.product_image_path}#{productMBean.selectedProduct.imageFile}" />
+						<h:outputText value="#{productMBean.selectedProduct.description}" />
+						<h:outputText
+							value="#{productMBean.selectedProduct.price} #{cfg.currency}" />
+					</h:panelGrid>
+				</p:outputPanel>
+			</h:form>
+		</p:dialog>
+	</ui:composition>
 </h:body>
 </html>
