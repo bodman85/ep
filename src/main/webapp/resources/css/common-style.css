@@ -1,13 +1,23 @@
 html {
-	margin: 0;
-	padding: 0;
-	height: 100%;
-	background-image: URL("../resources/img/paris_background.jpg");
-	background-repeat: no-repeat;
-	background-position: center;
-	background-attachment: fixed;
-	background-size: 100% auto;
 	background-color: #fff;
+}
+
+#wrap {
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+}
+
+.fullbackground{
+    position:relative;
+}
+
+img.fullbackground{
+    position:fixed;
+    z-index:-1;
+    top:0;
+    left:0;
+    width:100%; /* alternative: right:0; */
+    height:auto; /* alternative: bottom:0; */
 }
 
 
@@ -28,11 +38,6 @@ img {
 {
 	text-align: justify;
 	font-size:95% !important;
-}
-
-#wrap {
-	/*width: 1280px;*/
-    margin:0 auto;
 }
 
 #header {

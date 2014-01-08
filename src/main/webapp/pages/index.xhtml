@@ -4,15 +4,31 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
-	<head>
-		<meta http-equiv="refresh" content="0; url=pages/index.xhtml" />
-	</head>>
+<h:head>
+	<h:outputStylesheet library="css" name="common-style.css" />
+</h:head>
 <h:body>
+	<div id="wrap" class="fullbackground">
+		<h:graphicImage library="img" name="paris_background.jpg"
+			class="fullbackground" />
 
-	<ui:composition template="template/common/commonLayout.xhtml">
+		<div id="header">
+			<ui:insert name="header">
+				<ui:include src="/pages/template/common/commonHeader.xhtml" />
+			</ui:insert>
+		</div>
 
-	</ui:composition>
+		<div id="content">
+			<ui:insert name="content">
+				<ui:include src="/pages/template/common/commonContent.xhtml" />
+			</ui:insert>
+		</div>
 
+		<div id="footer">
+			<ui:insert name="footer">
+				<ui:include src="/pages/template/common/commonFooter.xhtml" />
+			</ui:insert>
+		</div>
+	</div>
 </h:body>
-
 </html>
