@@ -120,13 +120,6 @@
 			<version>3.12.1.GA</version>
 		</dependency>
 
-		
-		<!-- MySQL Java Connector library -->
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.17</version>
-		</dependency>
 		<!-- Log4j library -->
 		<dependency>
 			<groupId>log4j</groupId>
