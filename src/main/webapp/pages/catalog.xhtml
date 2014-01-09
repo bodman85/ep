@@ -42,7 +42,9 @@
 				<p:outputPanel id="productDetail">
 					<h:panelGrid columns="2" cellpadding="5">
 						<p:graphicImage
-							value="#{cfg.product_image_path}#{productMBean.selectedProduct.imageFile}" />
+							value="#{cfg.product_image_path}#{productMBean.selectedProduct.imageFile}" 
+							width="auto"
+							height="auto"/>
 						<h:outputText value="#{productMBean.selectedProduct.description}" />
 						<h:outputText
 							value="#{productMBean.selectedProduct.price} #{cfg.currency}" />
