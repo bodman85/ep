@@ -80,8 +80,8 @@ img {
 	zoom: 1;
     *display: inline;
 	text-align: center;
-	color:#000080;
-	font-size: 18pt;
+	color:#000F55;
+	font-size: 17pt;
 }
 
 #headerright_inner2 {
@@ -91,11 +91,13 @@ img {
 	zoom: 1;
     *display: inline;
 	text-align: center;
-	color:#000080;
-	font-size: 18pt;
+	color:#000F55;
+	font-size: 17pt;
 }
 
 #headerright img {
+	width:45%;
+    height: auto;
 	vertical-align: middle;
 	padding-bottom: 3px;
 }
