@@ -1,0 +1,22 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<title>About us</title>
+</h:head>
+<body>
+<h:outputStylesheet library="css" name="common-style.css" />
+	<ui:composition>
+			<p:lightBox styleClass="imagebox">
+				<h:outputLink
+					value="#{cfg.product_image_path_relative}0000000001.jpg">
+					<h:graphicImage
+						value="#{cfg.product_image_path_absolute}0000000001.jpg" />
+				</h:outputLink>
+			</p:lightBox>
+	</ui:composition>
+</body>
+</html>
