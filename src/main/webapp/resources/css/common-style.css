@@ -29,6 +29,25 @@ img {
 	border: 0;
 }
 
+.ui-helper-hidden{
+	width: auto !important;
+	height: auto !important;
+}
+
+.ui-lightbox-content.ui-corner-all{
+	width: auto !important;
+	height: auto !important;
+	background-color: #fff !important;
+}
+
+.ui-state-default.ui-lightbox-nav-left{
+	display:none !important;
+}
+
+.ui-state-default.ui-lightbox-nav-right{
+	display:none !important;
+}
+
 .ui-widget-content {
     opacity: 0.95;	
     /*filter: alpha(opacity=95);IE8 */
