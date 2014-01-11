@@ -40,7 +40,7 @@
 			appendTo="@(body)">
 				<p:outputPanel id="productDetail">
 					<h:panelGrid columns="2" cellpadding="5">
-						<p:lightBox styleClass="imagebox">
+						<p:lightBox>
 							<h:outputLink value="#{cfg.product_image_path_relative}#{productMBean.selectedProduct.imageFile}">
 								<h:graphicImage
 									value="#{cfg.product_image_path_absolute}#{productMBean.selectedProduct.imageFile}"
