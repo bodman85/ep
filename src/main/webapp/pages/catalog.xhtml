@@ -22,7 +22,9 @@
 					<p:commandLink update=":tabView:modalDialog"
 						oncomplete="PF('productDialog').show()" title="Подробнее">
 						<p:graphicImage
-							value="#{cfg.product_image_path_absolute}#{product.imageFile}" />
+							value="#{cfg.product_image_path_absolute}#{product.imageFile}" 
+							width="100"
+							height="150"/>
 						<h:outputText styleClass="ui-icon ui-icon-search"
 							style="margin:0 auto;" />
 						<f:setPropertyActionListener
@@ -41,7 +43,9 @@
 						<p:lightBox styleClass="imagebox">
 							<h:outputLink value="#{cfg.product_image_path_relative}#{productMBean.selectedProduct.imageFile}">
 								<h:graphicImage
-									value="#{cfg.product_image_path_absolute}#{productMBean.selectedProduct.imageFile}"/>
+									value="#{cfg.product_image_path_absolute}#{productMBean.selectedProduct.imageFile}"
+									width="100"
+									height="150"/>
 							</h:outputLink>
 						</p:lightBox>
 						<h:outputText value="#{productMBean.selectedProduct.description}" />
