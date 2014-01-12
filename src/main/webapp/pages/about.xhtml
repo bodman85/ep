@@ -12,9 +12,9 @@
 	<ui:composition>
 			<p:lightBox>
 				<h:outputLink
-					value="#{cfg.product_image_path_relative}0000000001.jpg">
+					value="#{request.contextPath}#{cfg.product_image_path_absolute}0000000001.jpg">
 					<h:graphicImage
-						value="#{request.contextPath}#{cfg.product_image_path_absolute}0000000001.jpg" 
+						value="#{cfg.product_image_path_absolute}0000000001.jpg" 
 						width="100"
 						height="150"/>
 				</h:outputLink>
