@@ -36,6 +36,8 @@ img {
 .ui-lightbox-content.ui-corner-all{
 	width: auto !important;
 	height: auto !important;
+	max-width: 640px;
+	max-height: 480px;
 	background-color: #fff !important;
 }
 
