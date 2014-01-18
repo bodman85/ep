@@ -1,4 +1,4 @@
-package com.otv;
+package ua.kiev.ep;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -8,7 +8,10 @@ import java.util.UUID;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-import com.otv.hbm.Car;
+import ua.kiev.ep.hbm.Car;
+
+
+
 
 @ManagedBean(name="tableBean")
 @SessionScoped

@@ -3,27 +3,76 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:body>
 	<ui:composition>
+
+		<div id="headerleft">
+			<h:link outcome="/pages/index.xhtml">
+				<h:graphicImage library="img" name="logo.png" alt="Elite Perfumes" />
+			</h:link>
+			<h:outputLink id="loginLink" value="javascript:void(0)" class="login"
+				onclick="PF('dlg').show()" title="login">
+				<h:outputText value="Вход" />
+			</h:outputLink>
+			<h:outputText value="/" class="registration" />
+			<h:outputLink id="registrationLink" value="javascript:void(0)"
+				class="registration" onclick="PF('dlg').show()" title="Register">
+				<h:outputText value="Регистрация" />
+			</h:outputLink>
+		</div>
+		<div id="headerright">
+			<div id="headerright_inner1">
+				<h:graphicImage library="img" name="phone.png" alt="phone number" />
+				<br />
+				<h:outputText value="#{initParam['phone']}" escape="false" />
+			</div>
+			<div id="headerright_inner2">
+				<h:graphicImage library="img" name="open.png" alt="working hours" />
+				<br />
+				<h:outputText value="#{initParam['working_hours']}" escape="false" />
+			</div>
+		</div>
+
 		<h:form>
-			<div id="headerleft">
-				<h:link outcome="/pages/index.xhtml">
-					<h:graphicImage library="img" name="logo.png" alt="Elite Perfumes" />
-				</h:link>
-			</div>
-			<div id="headerright">
-				<div id="headerright_inner1">
-					<h:graphicImage library="img" name="phone.png" alt = "phone number" />
-					<br />
-					<h:outputText value="#{initParam['phone']}" escape="false" />
-				</div>
-				<div id="headerright_inner2">
-					<h:graphicImage library="img" name="open.png" alt = "working hours" />
-					<br />
-					<h:outputText value="#{initParam['working_hours']}" escape="false" />
-				</div>
-			</div>
+			<p:growl id="growl" showDetail="true" life="3000" />
+
+			<p:dialog id="dialog" header="Вход" widgetVar="dlg" resizable="false">
+
+				<h:panelGrid columns="2" cellpadding="5">
+					<h:outputLabel for="username" value="Логин:" />
+					<p:inputText value="#{loginBean.username}" id="username"
+						required="true" label="username" />
+
+					<h:outputLabel for="password" value="Пароль:" />
+					<h:inputSecret value="#{loginBean.password}" id="password"
+						required="true" label="Пароль" />
+
+					<f:facet name="footer">
+						<p:commandButton id="loginButton" value="Войти" update="growl"
+							actionListener="#{loginBean.login}"
+							oncomplete="handleLoginRequest(xhr, status, args)" />
+					</f:facet>
+				</h:panelGrid>
+
+			</p:dialog>
+
+
+			<script type="text/javascript">
+				function handleLoginRequest(xhr, status, args) {
+					if (args.validationFailed || !args.loggedIn) {
+						PF('dlg').jq.effect("shake", {
+							times : 5
+						}, 100);
+					} else {
+						PF('dlg').hide();
+						$('#loginLink').fadeOut();
+					}
+				}
+			</script>
+
 		</h:form>
 	</ui:composition>
 </h:body>

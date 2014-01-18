@@ -1,4 +1,4 @@
-package com.otv;
+package ua.kiev.ep;
  
 import java.io.Serializable;
 import java.util.List;
@@ -6,9 +6,12 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+
+import ua.kiev.ep.hbm.User;
+import ua.kiev.ep.util.HibernateUtil;
+
+
  
-import com.otv.hbm.User;
-import com.otv.util.HibernateUtil;
  
 /**
  * @author ep.kiev.ua

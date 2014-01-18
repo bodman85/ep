@@ -1,4 +1,4 @@
-package com.otv.hbm;
+package ua.kiev.ep.hbm;
 
 public class Car {
 

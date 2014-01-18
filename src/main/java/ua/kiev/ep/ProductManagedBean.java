@@ -1,4 +1,4 @@
-package com.otv;
+package ua.kiev.ep;
  
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -10,8 +10,11 @@ import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.otv.hbm.Product;
-import com.otv.util.HibernateUtil;
+import ua.kiev.ep.hbm.Product;
+import ua.kiev.ep.util.HibernateUtil;
+
+
+
  
 /**
  * @author ep.kiev.ua

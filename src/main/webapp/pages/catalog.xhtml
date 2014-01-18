@@ -13,39 +13,39 @@
 </h:head>
 <h:body>
 	<ui:composition>
-		<p:dataGrid var="product" value="#{productMBean.getProducts()}"
-			columns="3" rows="12" paginator="true"
-			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-			rowsPerPageTemplate="9,12,15">
-			<p:panel header="#{product.name}" style="text-align:center">
-				<h:panelGrid columns="1" style="width:100%">
-					<p:commandLink update=":tabView:modalDialog"
-						oncomplete="PF('productDialog').show()" title="Подробнее">
-						<p:graphicImage
-							value="#{cfg.product_image_path_absolute}#{product.imageFile}" 
-							width="100"
-							height="150"/>
-						<h:outputText styleClass="ui-icon ui-icon-search"
-							style="margin:0 auto;" />
-						<f:setPropertyActionListener
-							target="#{productMBean.selectedProduct}" value="#{product}" />
-					</p:commandLink>
-					<h:outputText value="#{product.price} #{cfg.currency}" />
-				</h:panelGrid>
-			</p:panel>
-		</p:dataGrid>
-		<p:dialog id="modalDialog"
-			header="#{productMBean.selectedProduct.name}"
-			widgetVar="productDialog" modal="true" height="auto"
-			appendTo="@(body)">
+		<h:form id ="catalogForm">
+			<p:dataGrid var="product" value="#{productMBean.getProducts()}"
+				columns="3" rows="12" paginator="true"
+				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="9,12,15">
+				<p:panel header="#{product.name}" style="text-align:center">
+					<h:panelGrid columns="1" style="width:100%">
+						<p:commandLink update=":tabView:catalogForm:modalDialog"
+							oncomplete="PF('productDialog').show()" title="Подробнее">
+							<p:graphicImage
+								value="#{cfg.product_image_path_absolute}#{product.imageFile}"
+								width="100" height="150" />
+							<h:outputText styleClass="ui-icon ui-icon-search"
+								style="margin:0 auto;" />
+							<f:setPropertyActionListener
+								target="#{productMBean.selectedProduct}" value="#{product}" />
+						</p:commandLink>
+						<h:outputText value="#{product.price} #{cfg.currency}" />
+					</h:panelGrid>
+				</p:panel>
+			</p:dataGrid>
+			<p:dialog id="modalDialog"
+				header="#{productMBean.selectedProduct.name}"
+				widgetVar="productDialog" modal="true" height="auto"
+				appendTo="@(body)">
 				<p:outputPanel id="productDetail">
 					<h:panelGrid columns="2" cellpadding="5">
 						<p:lightBox>
-							<h:outputLink value="#{request.contextPath}#{cfg.product_image_path_absolute}#{productMBean.selectedProduct.imageFile}">
+							<h:outputLink
+								value="#{request.contextPath}#{cfg.product_image_path_absolute}#{productMBean.selectedProduct.imageFile}">
 								<h:graphicImage
 									value="#{cfg.product_image_path_absolute}#{productMBean.selectedProduct.imageFile}"
-									width="100"
-									height="150"/>
+									width="100" height="150" />
 							</h:outputLink>
 						</p:lightBox>
 						<h:outputText value="#{productMBean.selectedProduct.description}" />
@@ -53,7 +53,8 @@
 							value="#{productMBean.selectedProduct.price} #{cfg.currency}" />
 					</h:panelGrid>
 				</p:outputPanel>
-		</p:dialog>
+			</p:dialog>
+		</h:form>>
 	</ui:composition>
 </h:body>
 </html>
