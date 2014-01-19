@@ -8,7 +8,6 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:body>
 	<ui:composition>
-
 		<div id="headerleft">
 			<h:link outcome="/pages/index.xhtml">
 				<h:graphicImage library="img" name="logo.png" alt="Elite Perfumes" />
@@ -43,37 +42,25 @@
 
 				<h:panelGrid columns="2" cellpadding="5">
 					<h:outputLabel for="username" value="Логин:" />
-					<p:inputText value="#{loginBean.username}" id="username"
+					<p:inputText value="#{loginMBean.username}" id="username"
 						required="true" label="username" />
 
 					<h:outputLabel for="password" value="Пароль:" />
-					<h:inputSecret value="#{loginBean.password}" id="password"
+					<h:inputSecret value="#{loginMBean.password}" id="password"
 						required="true" label="Пароль" />
 
 					<f:facet name="footer">
 						<p:commandButton id="loginButton" value="Войти" update="growl"
-							actionListener="#{loginBean.login}"
+							actionListener="#{loginMBean.login}"
 							oncomplete="handleLoginRequest(xhr, status, args)" />
 					</f:facet>
 				</h:panelGrid>
-
 			</p:dialog>
-
-
-			<script type="text/javascript">
-				function handleLoginRequest(xhr, status, args) {
-					if (args.validationFailed || !args.loggedIn) {
-						PF('dlg').jq.effect("shake", {
-							times : 5
-						}, 100);
-					} else {
-						PF('dlg').hide();
-						$('#loginLink').fadeOut();
-					}
-				}
-			</script>
-
 		</h:form>
+
+		<script type="text/javascript"
+			src="#{request.contextPath}/resources/js/login.js"></script>
+
 	</ui:composition>
 </h:body>
 </html>
