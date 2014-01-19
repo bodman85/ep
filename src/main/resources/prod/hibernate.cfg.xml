@@ -25,7 +25,7 @@
 		<property name="show_sql">true</property>
 		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
 		<!-- Mapping files -->
-		<mapping class="ua.kiev.ep.hbm.Product" />
+		<mapping class="com.edp.hbm.Product" />
 	</session-factory>
 </hibernate-configuration>
 

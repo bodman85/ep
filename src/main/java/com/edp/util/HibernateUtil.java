@@ -1,4 +1,4 @@
-package ua.kiev.ep.util;
+package com.edp.util;
 
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;

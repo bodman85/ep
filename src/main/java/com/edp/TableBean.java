@@ -1,4 +1,4 @@
-package ua.kiev.ep;
+package com.edp;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -8,7 +8,8 @@ import java.util.UUID;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-import ua.kiev.ep.hbm.Car;
+import com.edp.hbm.Car;
+
 
 
 

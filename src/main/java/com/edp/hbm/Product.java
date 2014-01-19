@@ -1,4 +1,4 @@
-package ua.kiev.ep.hbm;
+package com.edp.hbm;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

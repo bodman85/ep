@@ -1,4 +1,4 @@
-package ua.kiev.ep;
+package com.edp;
  
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -10,8 +10,9 @@ import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import ua.kiev.ep.hbm.Product;
-import ua.kiev.ep.util.HibernateUtil;
+import com.edp.hbm.Product;
+import com.edp.util.HibernateUtil;
+
 
 
 

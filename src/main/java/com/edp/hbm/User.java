@@ -1,4 +1,4 @@
-package ua.kiev.ep.hbm;
+package com.edp.hbm;
 
 /**
  * @author onlinetechvision.com
