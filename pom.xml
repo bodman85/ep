@@ -86,7 +86,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.primefaces.themes</groupId>
-			<artifactId>humanity</artifactId>
+			<artifactId>pepper-grinder</artifactId>
 			<version>1.0.6</version>
 		</dependency>
 		<dependency>
