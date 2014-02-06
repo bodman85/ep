@@ -12,15 +12,27 @@
 			<h:link outcome="/pages/index.xhtml">
 				<h:graphicImage library="img" name="logo.png" alt="Elite Perfumes" />
 			</h:link>
-			<h:outputLink id="loginLink" value="javascript:void(0)" class="login"
-				onclick="PF('dlg').show()" title="login">
-				<h:outputText value="Вход" />
-			</h:outputLink>
-			<h:outputText value="/" class="registration" />
-			<h:outputLink id="registrationLink" value="javascript:void(0)"
-				class="registration" onclick="PF('dlg').show()" title="Register">
-				<h:outputText value="Регистрация" />
-			</h:outputLink>
+			<h:panelGroup id="loginPanelId" layout="block"
+				rendered="#{!loginMBean.isLoggedIn()}">
+				<h:outputLink id="loginLink" value="javascript:void(0)"
+					class="login" onclick="PF('dlg').show()" title="login">
+					<h:outputText value="Вход" />
+				</h:outputLink>
+				<h:outputText value="/" class="registration" />
+				<h:outputLink id="registrationLink" value="javascript:void(0)"
+					class="registration" onclick="PF('dlg').show()" title="Register">
+					<h:outputText value="Регистрация" />
+				</h:outputLink>
+			</h:panelGroup>
+			<h:form id="logoutPanelId" layout="block"
+				rendered="#{loginMBean.isLoggedIn()}">
+				<h:outputText value="Добро пожаловать, #{loginMBean.getUsername()}"
+					class="wellcome" />
+				<br />
+				<h:commandLink id="logoutLink" class="login" title="Logout"
+					value="Выйти" action = "#{loginMBean.logout}">
+				</h:commandLink>
+			</h:form>
 		</div>
 		<div id="headerright">
 			<div id="headerright_inner1">
