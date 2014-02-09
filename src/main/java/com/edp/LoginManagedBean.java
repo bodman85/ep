@@ -40,24 +40,20 @@ public class LoginManagedBean {
 	}
 
 	public void login(ActionEvent actionEvent) throws IOException{
-	//	RequestContext context = RequestContext.getCurrentInstance();
-		FacesMessage msg = null;
+		FacesMessage msg = null;  
+		RequestContext context = RequestContext.getCurrentInstance();
 
 		if (username != null && username.equals("admin") && password != null
 				&& password.equals("admin")) {
 			loggedIn = true;
-		//	msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Welcome",
-		//			username);
-			FacesContext.getCurrentInstance()
-			   .getExternalContext().redirect("/ep/pages/index.xhtml?faces-redirect=true");
+			//msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Welcome", username);  
 		} else {
 			loggedIn = false;
-			msg = new FacesMessage(FacesMessage.SEVERITY_WARN, "Login Error",
-					"Invalid credentials");
-			FacesContext.getCurrentInstance().addMessage(null, msg);
+			msg = new FacesMessage(FacesMessage.SEVERITY_WARN, "Login Error", "Wrong username or password!");  
+			 
 		}
-//		context.addCallbackParam("loggedIn", loggedIn);
-		return;
+		FacesContext.getCurrentInstance().addMessage(null, msg);  
+		context.addCallbackParam("loggedIn", loggedIn);
 	}
 
 	public String logout() {
