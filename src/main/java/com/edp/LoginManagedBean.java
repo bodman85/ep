@@ -49,10 +49,10 @@ public class LoginManagedBean {
 			//msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Welcome", username);  
 		} else {
 			loggedIn = false;
-			msg = new FacesMessage(FacesMessage.SEVERITY_WARN, "Login Error", "Wrong username or password!");  
+			msg = new FacesMessage(FacesMessage.SEVERITY_WARN, "Login Error", "Wrong username or password!");
+			FacesContext.getCurrentInstance().addMessage(null, msg);  
 			 
 		}
-		FacesContext.getCurrentInstance().addMessage(null, msg);  
 		context.addCallbackParam("loggedIn", loggedIn);
 	}
 
