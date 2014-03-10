@@ -80,6 +80,8 @@
 							actionListener="#{loginMBean.login}"
 							oncomplete="handleLoginRequest(xhr, status, args)" 
 							update = ":loginPanelId growl"/>
+						<p:commandButton value="#{msg.cancel}" style='float:right;'
+							immediate='true' onclick="dialog.hide();" />
 					</f:facet>
 				</h:panelGrid>
 			</p:dialog>
