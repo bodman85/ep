@@ -5,9 +5,17 @@
 
 	version="2.0">
 	<application>
+		<locale-config>
+     		<default-locale>ru</default-locale>
+     		<supported-locale>en</supported-locale>
+     	</locale-config>
 		<resource-bundle>
 			<base-name>config</base-name>
 			<var>cfg</var>
+		</resource-bundle>
+		<resource-bundle>
+			<base-name>messages</base-name>
+			<var>msg</var>
 		</resource-bundle>
 	</application>
 	<!-- <navigation-rule> <from-view-id>/pages/index.xhtml</from-view-id> <navigation-case> 

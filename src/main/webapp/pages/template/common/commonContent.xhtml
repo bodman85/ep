@@ -15,19 +15,19 @@
 		<p:tabView id="tabView" effect="fade" effectDuration="normal"
 			dynamic="false" cache="true">
 
-			<p:tab id="catalog" title="Каталог" icon="ui-icon-search">
+			<p:tab id="catalog" title="#{msg.catalog}" icon="ui-icon-search">
 				<ui:include src="/pages/catalog.xhtml" />
 			</p:tab>
 
-			<p:tab id="actions" title="Акции" icon="ui-icon-star">
+			<p:tab id="actions" title="#{msg.actions}" icon="ui-icon-star">
 				<ui:include src="/pages/actions.xhtml" />
 			</p:tab>
 
-			<p:tab id="newItems" title="Новинки" icon="ui-icon-calendar">
+			<p:tab id="newItems" title="#{msg.news}" icon="ui-icon-calendar">
 				
 			</p:tab>
 
-			<p:tab id="about" title="О нас" icon="ui-icon-person">
+			<p:tab id="about" title="#{msg.about}" icon="ui-icon-person">
 				<ui:include src="/pages/about.xhtml" />
 			</p:tab>
 

@@ -3,32 +3,35 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
-<h:head>
-	<h:outputStylesheet library="css" name="common-style.css" />
-</h:head>
-<h:body>
-	<div id="wrap" class="fullbackground">
-		<h:graphicImage library="img" name="paris_background.jpg"
-			class="fullbackground" />
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+<f:view locale="#{languageMBean.locale}">
+	<h:head>
+		<h:outputStylesheet library="css" name="common-style.css" />
+	</h:head>
+	<h:body>
+		<div id="wrap" class="fullbackground">
+			<h:graphicImage library="img" name="paris_background.jpg"
+				class="fullbackground" />
 
-		<div id="header">
-			<ui:insert name="header">
-				<ui:include src="/pages/template/common/commonHeader.xhtml" />
-			</ui:insert>
-		</div>
+			<div id="header">
+				<ui:insert name="header">
+					<ui:include src="/pages/template/common/commonHeader.xhtml" />
+				</ui:insert>
+			</div>
 
-		<div id="content">
-			<ui:insert name="content">
-				<ui:include src="/pages/template/common/commonContent.xhtml" />
-			</ui:insert>
-		</div>
+			<div id="content">
+				<ui:insert name="content">
+					<ui:include src="/pages/template/common/commonContent.xhtml" />
+				</ui:insert>
+			</div>
 
-		<div id="footer">
-			<ui:insert name="footer">
-				<ui:include src="/pages/template/common/commonFooter.xhtml" />
-			</ui:insert>
+			<div id="footer">
+				<ui:insert name="footer">
+					<ui:include src="/pages/template/common/commonFooter.xhtml" />
+				</ui:insert>
+			</div>
 		</div>
-	</div>
-</h:body>
+	</h:body>
+</f:view>
 </html>

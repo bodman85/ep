@@ -16,22 +16,22 @@
 				<h:outputLink id="loginLink" value="javascript:void(0)"
 					class="login" onclick="PF('dlg').show()" title="login"
 					rendered="#{!loginMBean.isLoggedIn()}">
-					<h:outputText value="Вход" />
+					<h:outputText value="#{msg.enter}"  />
 				</h:outputLink>
 				<h:outputText value="/" class="registration"
 					rendered="#{!loginMBean.isLoggedIn()}" />
 				<h:outputLink id="registrationLink" 
-					class="registration" onclick="PF('dlg').show()" title="Register"
+					class="registration" onclick="PF('dlg').show()" title="#{msg.register}"
 					rendered="#{!loginMBean.isLoggedIn()}">
-					<h:outputText value="Регистрация" />
+					<h:outputText value="#{msg.register}" />
 				</h:outputLink>
 				<h:form id="logoutForm" layout="block"
 					rendered="#{loginMBean.isLoggedIn()}">
-					<h:outputText value="Добро пожаловать, #{loginMBean.getUsername()}"
-						class="wellcome" />
+					<h:outputText value="#{msg.welcome}, #{loginMBean.getUsername()}"
+						class="welcome" />
 					<br />
 					<h:commandLink id="logoutLink" class="login" title="Logout"
-						value="Выйти" action="#{loginMBean.logout}" update=":loginPanelId">
+						value="#{msg.exit}" action="#{loginMBean.logout}" update=":loginPanelId">
 					</h:commandLink>
 				</h:form>
 			</h:panelGroup>
@@ -43,27 +43,40 @@
 				<h:outputText value="#{initParam['phone']}" escape="false" />
 			</div>
 			<div id="headerright_inner2">
-				<h:graphicImage library="img" name="open.png" alt="working hours" />
+				<h:graphicImage library="img" name="open.png" alt="working hours"
+					rendered="#{languageMBean.localeCode.equals('ru')}" />
+				<h:graphicImage library="img" name="open_en.png" alt="working hours"
+					rendered="#{!languageMBean.localeCode.equals('ru')}" />
 				<br />
-				<h:outputText value="#{initParam['working_hours']}" escape="false" />
+				<h:outputText value="#{msg.weekdays}"/>
+				<br />
+				<h:outputText value="#{msg.weekends}"/>
+			</div>
+			<div id="headerright_inner3">
+			<h:form>
+				<h:selectOneMenu value="#{languageMBean.localeCode}" onchange="submit()"
+					valueChangeListener="#{languageMBean.countryLocaleCodeChanged}">
+		   			<f:selectItems value="#{languageMBean.countriesInMap}" /> 
+	   			</h:selectOneMenu>
+   			</h:form>
 			</div>
 		</div>
 
 		<h:form>
 			<p:growl id="growl" showDetail="true" life="3000" />  
-			<p:dialog id="dialog" header="Вход" widgetVar="dlg" resizable="false">
+			<p:dialog id="dialog" header="#{msg.enter}" widgetVar="dlg" resizable="false">
 
 				<h:panelGrid columns="2" cellpadding="5">
-					<h:outputLabel for="username" value="Логин:" />
+					<h:outputLabel for="username" value="#{msg.login}:" />
 					<p:inputText value="#{loginMBean.username}" id="username"
 						required="true" label="username" />
 
-					<h:outputLabel for="password" value="Пароль:" />
+					<h:outputLabel for="password" value="#{msg.password}:" />
 					<h:inputSecret value="#{loginMBean.password}" id="password"
-						required="true" label="Пароль" />
+						required="true" label="password" />
 
 					<f:facet name="footer">
-						<p:commandButton id="loginButton" value="Войти"
+						<p:commandButton id="loginButton" value="#{msg.enter}"
 							actionListener="#{loginMBean.login}"
 							oncomplete="handleLoginRequest(xhr, status, args)" 
 							update = ":loginPanelId growl"/>
