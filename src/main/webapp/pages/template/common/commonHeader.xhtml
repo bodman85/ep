@@ -44,9 +44,9 @@
 			</div>
 			<div id="headerright_inner2">
 				<h:graphicImage library="img" name="open.png" alt="working hours"
-					rendered="#{languageMBean.localeCode.equals('ru')}" />
+					rendered="#{languageMBean.language.equals('ru')}" />
 				<h:graphicImage library="img" name="open_en.png" alt="working hours"
-					rendered="#{!languageMBean.localeCode.equals('ru')}" />
+					rendered="#{!languageMBean.language.equals('ru')}" />
 				<br />
 				<h:outputText value="#{msg.weekdays}"/>
 				<br />
@@ -54,9 +54,9 @@
 			</div>
 			<div id="headerright_inner3">
 			<h:form>
-				<h:selectOneMenu value="#{languageMBean.localeCode}" onchange="submit()"
-					valueChangeListener="#{languageMBean.countryLocaleCodeChanged}">
-		   			<f:selectItems value="#{languageMBean.countriesInMap}" /> 
+				<h:selectOneMenu value="#{languageMBean.language}" onchange="submit()">
+					<f:selectItem itemValue="en" itemLabel="English" />
+               		<f:selectItem itemValue="ru" itemLabel="Русский" />
 	   			</h:selectOneMenu>
    			</h:form>
 			</div>

@@ -6,8 +6,9 @@
 	version="2.0">
 	<application>
 		<locale-config>
-     		<default-locale>ru</default-locale>
+     		<supported-locale>ru</supported-locale>
      		<supported-locale>en</supported-locale>
+     		<default-locale>ru</default-locale>
      	</locale-config>
 		<resource-bundle>
 			<base-name>config</base-name>
