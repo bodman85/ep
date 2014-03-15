@@ -46,8 +46,9 @@
 				<h:graphicImage library="img" name="open.png" alt="working hours"
 					rendered="#{languageMBean.language.equals('ru')}" />
 				<h:graphicImage library="img" name="open_en.png" alt="working hours"
-					rendered="#{!languageMBean.language.equals('ru')}" />
+					rendered="#{languageMBean.language.equals('en')}" />
 				<br />
+				<h:outputText value="#{languageMBean.language}"/>
 				<h:outputText value="#{msg.weekdays}"/>
 				<br />
 				<h:outputText value="#{msg.weekends}"/>
