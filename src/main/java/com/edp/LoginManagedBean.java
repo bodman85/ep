@@ -1,6 +1,7 @@
 package com.edp;
 
 import java.io.IOException;
+import java.util.ResourceBundle;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -40,7 +41,8 @@ public class LoginManagedBean {
 	}
 
 	public void login(ActionEvent actionEvent) throws IOException{
-		FacesMessage msg = null;  
+		FacesMessage fmsg = null;  
+		ResourceBundle msg = ResourceBundle.getBundle("messages", FacesContext.getCurrentInstance().getViewRoot().getLocale());
 		RequestContext context = RequestContext.getCurrentInstance();
 
 		if (username != null && username.equals("admin") && password != null
@@ -49,8 +51,8 @@ public class LoginManagedBean {
 			//msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Welcome", username);  
 		} else {
 			loggedIn = false;
-			msg = new FacesMessage(FacesMessage.SEVERITY_WARN, "Login Error", "Wrong username or password!");
-			FacesContext.getCurrentInstance().addMessage(null, msg);  
+			fmsg = new FacesMessage(FacesMessage.SEVERITY_WARN, msg.getString("loginError"), msg.getString("wrongUserPass"));
+			FacesContext.getCurrentInstance().addMessage(null, fmsg);  
 			 
 		}
 		context.addCallbackParam("loggedIn", loggedIn);

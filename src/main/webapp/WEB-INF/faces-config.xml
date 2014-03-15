@@ -18,6 +18,9 @@
 			<base-name>messages</base-name>
 			<var>msg</var>
 		</resource-bundle>
+		<message-bundle>
+			<base-name>messages</base-name>
+		</message-bundle>
 	</application>
 	<!-- <navigation-rule> <from-view-id>/pages/index.xhtml</from-view-id> <navigation-case> 
 		<from-outcome>success</from-outcome> <to-view-id>/pages/welcome.xhtml</to-view-id> 
