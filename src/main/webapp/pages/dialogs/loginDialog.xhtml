@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:body>
+
+	<ui:composition>
+		<p:dialog id="dialog" header="#{msg.enter}" widgetVar="loginDlg"
+			resizable="false">
+
+			<h:panelGrid columns="2" cellpadding="5">
+				<h:outputLabel for="username" value="#{msg.login}:" />
+				<p:inputText value="#{loginMBean.username}" id="username"
+					required="true" label="username" />
+
+				<h:outputLabel for="password" value="#{msg.password}:" />
+				<h:inputSecret value="#{loginMBean.password}" id="password"
+					required="true" label="password" />
+
+				<f:facet name="footer">
+					<p:commandButton id="loginButton" value="#{msg.enter}"
+						actionListener="#{loginMBean.login}"
+						oncomplete="handleLoginRequest(xhr, status, args)"
+						update=":loginPanelId growl" />
+					<p:commandButton value="#{msg.cancel}" style='float:right;'
+						immediate='true' onclick="loginDlg.hide();" />
+				</f:facet>
+			</h:panelGrid>
+		</p:dialog>
+	</ui:composition>
+
+</h:body>
+
+</html>
