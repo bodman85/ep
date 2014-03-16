@@ -9,12 +9,12 @@
 <h:body>
 
 	<ui:composition>
-		<p:dialog id="dialog" header="#{msg.enter}" widgetVar="loginDlg"
+		<p:dialog id="loginDialog" modal="true" header="#{msg.enter}" widgetVar="loginDlg"
 			resizable="false">
 
 			<h:panelGrid columns="2" cellpadding="5">
 				<h:outputLabel for="username" value="#{msg.login}:" />
-				<p:inputText value="#{loginMBean.username}" id="username"
+				<h:inputText value="#{loginMBean.username}" id="username"
 					required="true" label="username" />
 
 				<h:outputLabel for="password" value="#{msg.password}:" />

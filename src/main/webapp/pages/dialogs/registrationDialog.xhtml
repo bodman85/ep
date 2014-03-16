@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:body>
+
+	<ui:composition>
+		<p:dialog id="registrationDialog" modal="true"
+			header="#{msg.registration}" widgetVar="regDlg" resizable="false">
+
+			<h:panelGrid columns="2" cellpadding="5">
+				<h:outputLabel for="name" value="#{msg.name}:" />
+				<h:inputText value="#{regMBean.name}" id="name" />
+
+				<h:outputLabel for="sex" value="#{msg.sex}:" />
+				<p:selectOneRadio value="#{regMBean.sex}" id="sex">
+					<f:selectItem itemLabel="#{msg.male}" itemValue="M" />
+					<f:selectItem itemLabel="#{msg.female}" itemValue="F" />
+				</p:selectOneRadio>
+
+				<h:outputLabel for="username" value="#{msg.login}:" class="required" />
+				<h:inputText value="#{regMBean.username}" id="username"
+					required="true" />
+
+				<h:outputLabel for="password" value="#{msg.password}:"
+					class="required" />
+				<h:inputSecret value="#{regMBean.password}" id="password"
+					required="true" label="password" />
+
+				<h:outputLabel for="confirmPassword" value="#{msg.confirmPassword}:"
+					class="required" />
+				<h:inputSecret value="#{regMBean.confirmPassword}"
+					id="confirmPassword" required="true" />
+
+				<h:outputLabel for="email" value="#{msg.email}:" class="required" />
+				<h:inputText value="#{regMBean.email}" id="email" required="true"/>
+
+				<f:facet name="footer">
+					<p:commandButton id="loginButton2" value="#{msg.register}"
+						actionListener="#{regMBean.register}" />
+					<p:commandButton value="#{msg.cancel}" style='float:right;'
+						immediate='true' onclick="regDlg.hide();" />
+				</f:facet>
+			</h:panelGrid>
+		</p:dialog>
+	</ui:composition>
+
+</h:body>
+
+</html>

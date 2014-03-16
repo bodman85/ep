@@ -66,6 +66,11 @@ img {
 	font-size: 95% !important;
 }
 
+.required:after { 
+	content:" *";
+	color:red;	 
+}
+
 #header {
 	/*border: 1px red solid;*/
 	top: 0px;
