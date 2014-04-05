@@ -48,12 +48,14 @@ public class LoginManagedBean {
 		if (username != null && username.equals("admin") && password != null
 				&& password.equals("admin")) {
 			loggedIn = true;
-			//msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Welcome", username);  
+			fmsg = new FacesMessage(FacesMessage.SEVERITY_INFO, msg.getString("welcome"), username);  
+			FacesContext.getCurrentInstance().addMessage(null, fmsg);
+			context.update("growlForm:growl"); 
 		} else {
 			loggedIn = false;
 			fmsg = new FacesMessage(FacesMessage.SEVERITY_WARN, msg.getString("loginError"), msg.getString("wrongUserPass"));
 			FacesContext.getCurrentInstance().addMessage(null, fmsg);  
-			 
+			context.update("growlForm:growl"); 
 		}
 		context.addCallbackParam("loggedIn", loggedIn);
 	}

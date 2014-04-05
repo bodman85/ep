@@ -1,25 +1,35 @@
 package com.edp;
 
 import java.io.IOException;
-import java.util.ResourceBundle;
+import java.util.List;
 
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
-import org.primefaces.context.RequestContext;
+import org.apache.log4j.Logger;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import com.edp.hbm.Role;
+import com.edp.hbm.RoleName;
+import com.edp.hbm.Status;
+import com.edp.hbm.StatusName;
+import com.edp.hbm.User;
+import com.edp.util.HibernateUtil;
 
 @ManagedBean(name = "regMBean")
 @SessionScoped
 public class RegistrationManagedBean {
 	private String name;
-	private char sex;
-	private String username;
+	private char gender;
+	private String login;
 	private String password;
 	private String confirmPassword;
 	private String email;
+	private String role;
+	private String status;
+
+	private static Logger log = Logger.getLogger(RegistrationManagedBean.class);
 
 	public String getName() {
 		return name;
@@ -29,20 +39,20 @@ public class RegistrationManagedBean {
 		this.name = name;
 	}
 
-	public void setSex(char sex) {
-		this.sex = sex;
+	public void setGender(char gender) {
+		this.gender = gender;
 	}
 
-	public char getSex() {
-		return sex;
+	public char getGender() {
+		return gender;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getLogin() {
+		return login;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setLogin(String login) {
+		this.login = login;
 	}
 
 	public String getPassword() {
@@ -69,11 +79,59 @@ public class RegistrationManagedBean {
 		this.email = email;
 	}
 
-	public void register(ActionEvent actionEvent) throws IOException {
-		FacesMessage fmsg = null;
-		ResourceBundle msg = ResourceBundle.getBundle("messages", FacesContext
-				.getCurrentInstance().getViewRoot().getLocale());
-		RequestContext context = RequestContext.getCurrentInstance();
+	public String getRole() {
+		return role;
+	}
 
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public void register(ActionEvent actionEvent) throws IOException {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+
+		User user = new User();
+		Role role = new Role(RoleName.CLIENT);
+		Status status = new Status(StatusName.NEW);
+
+		user.setName(this.getName());
+		user.setGender(this.getGender());
+		user.setLogin(this.getLogin());
+		user.setPassword(this.getPassword());
+		user.setEmail(this.getEmail());
+
+		user.setRole(role);
+		user.setStatus(status);
+
+		Transaction tx = null;
+
+		try {
+			tx = session.beginTransaction();
+			session.save(user);
+			tx.commit();
+			log.debug("New Record : " + user + ", wasCommitted : "
+					+ tx.wasCommitted());
+		} catch (Exception e) {
+			if (tx != null) {
+				tx.rollback();
+				log.error(e.getMessage());
+			}
+		} finally {
+			session.close();
+		}
+	}
+
+	public List<User> getUsers() {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		List<User> userList = session.createCriteria(User.class).list();
+		return userList;
 	}
 }

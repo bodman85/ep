@@ -31,6 +31,9 @@
 		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
 		<!-- Mapping files -->
 		<mapping class="com.edp.hbm.Product" />
+		<mapping class="com.edp.hbm.User" />
+		<mapping class="com.edp.hbm.Role" />
+		<mapping class="com.edp.hbm.Status" />
 	</session-factory>
 </hibernate-configuration>
 

@@ -93,7 +93,6 @@ public class Product implements Serializable{
 	        Product item = (Product) obj;
 	        return item.getId()==getId();
 	    }
-
 	    return false;
 	}
 }

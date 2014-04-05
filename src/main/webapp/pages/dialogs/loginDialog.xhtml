@@ -9,23 +9,28 @@
 <h:body>
 
 	<ui:composition>
-		<p:dialog id="loginDialog" modal="true" header="#{msg.enter}" widgetVar="loginDlg"
-			resizable="false">
-
-			<h:panelGrid columns="2" cellpadding="5">
+		<p:dialog id="loginDialog" modal="true" header="#{msg.enter}"
+			widgetVar="loginDlg" resizable="false">
+			<p:ajax event="close" update="logGrid" resetValues="true" />
+			<h:panelGrid id="logGrid"  columns="3" cellpadding="5">
 				<h:outputLabel for="username" value="#{msg.login}:" />
 				<h:inputText value="#{loginMBean.username}" id="username"
-					required="true" label="username" />
+					required="true" requiredMessage="#{msg.requiredField}"
+					label="username" />
+				<p:message for="username" />
 
 				<h:outputLabel for="password" value="#{msg.password}:" />
 				<h:inputSecret value="#{loginMBean.password}" id="password"
-					required="true" label="password" />
+					required="true" requiredMessage="#{msg.requiredField}"
+					label="password" />
+				<p:message for="password" />
 
 				<f:facet name="footer">
 					<p:commandButton id="loginButton" value="#{msg.enter}"
 						actionListener="#{loginMBean.login}"
 						oncomplete="handleLoginRequest(xhr, status, args)"
-						update=":loginPanelId growl" />
+						update=":loginPanelId logGrid" >
+					</p:commandButton>
 					<p:commandButton value="#{msg.cancel}" style='float:right;'
 						immediate='true' onclick="loginDlg.hide();" />
 				</f:facet>

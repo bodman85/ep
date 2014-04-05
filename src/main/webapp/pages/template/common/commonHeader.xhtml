@@ -21,8 +21,8 @@
 				<h:outputText value="/" class="registration"
 					rendered="#{!loginMBean.isLoggedIn()}" />
 				<h:outputLink id="registrationLink" value="javascript:void(0)"
-					class="registration" onclick="PF('regDlg').show()" title="#{msg.registration}"
-					rendered="#{!loginMBean.isLoggedIn()}">
+					class="registration" onclick="PF('regDlg').show()"
+					title="#{msg.registration}" rendered="#{!loginMBean.isLoggedIn()}">
 					<h:outputText value="#{msg.register}" />
 				</h:outputLink>
 				<h:form id="logoutForm" layout="block"
@@ -62,7 +62,7 @@
 			</div>
 		</div>
 
-		<h:form>
+		<h:form id = "growlForm">
 			<p:growl id="growl" showDetail="true" life="3000" />
 			<ui:insert name="loginDialog">
 				<ui:include src="/pages/dialogs/loginDialog.xhtml" />
