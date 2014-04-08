@@ -10,6 +10,8 @@ import javax.faces.event.ActionEvent;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.primefaces.context.RequestContext;
+
 import com.edp.hbm.Role;
 import com.edp.hbm.RoleName;
 import com.edp.hbm.Status;
@@ -97,6 +99,7 @@ public class RegistrationManagedBean {
 
 	public void register(ActionEvent actionEvent) throws IOException {
 		Session session = HibernateUtil.getSessionFactory().openSession();
+		RequestContext context = RequestContext.getCurrentInstance();
 
 		User user = new User();
 		Role role = new Role(RoleName.CLIENT);
@@ -119,12 +122,14 @@ public class RegistrationManagedBean {
 			tx.commit();
 			log.debug("New Record : " + user + ", wasCommitted : "
 					+ tx.wasCommitted());
+			context.update("regForm:regDialog");
 		} catch (Exception e) {
 			if (tx != null) {
 				tx.rollback();
 				log.error(e.getMessage());
 			}
 		} finally {
+			clearFields();
 			session.close();
 		}
 	}
@@ -133,5 +138,22 @@ public class RegistrationManagedBean {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		List<User> userList = session.createCriteria(User.class).list();
 		return userList;
+	}
+
+	public void cancel(ActionEvent actionEvent) throws IOException {
+		clearFields();
+	}
+
+	private void clearFields() {
+		// immediate="true" on cancel button will skip validation
+		// clear cached values
+		this.name = "";
+		this.gender = '\u0000';
+		this.login = "";
+		this.password = "";
+		this.confirmPassword = "";
+		this.email = "";
+		this.role = "";
+		this.status = "";
 	}
 }

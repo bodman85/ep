@@ -8,57 +8,58 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:body>
 
-	<ui:composition>
-		<p:dialog id="registrationDialog" modal="true"
-			header="#{msg.registration}" widgetVar="regDlg" resizable="true">
-			<p:ajax event="close" update="regGrid" resetValues="true" />
-			<h:panelGrid id="regGrid" columns="3"
-				columnClasses="label,field,message" cellpadding="5">
-				<h:outputLabel for="name" value="#{msg.name}:" />
-				<h:inputText value="#{regMBean.name}" id="name" autocomplete="off" />
-				<p:message for="name" />
+<ui:composition>
+	<p:dialog id="regDialog" modal="true" header="#{msg.registration}"
+		widgetVar="regDlg" resizable="true">
+		<p:ajax event="close" update="regGrid" resetValues="true" />
+		<h:panelGrid id="regGrid" columns="3"
+			columnClasses="label,field,message" cellpadding="5">
+			<h:outputLabel for="name" value="#{msg.name}:" />
+			<h:inputText value="#{regMBean.name}" id="name" autocomplete="off" />
+			<p:message for="name" />
 
-				<h:outputLabel for="sex" value="#{msg.sex}:" />
-				<p:selectOneRadio value="#{regMBean.gender}" id="sex">
-					<f:selectItem itemLabel="#{msg.male}" itemValue="M" />
-					<f:selectItem itemLabel="#{msg.female}" itemValue="F" />
-				</p:selectOneRadio>
-				<p:message for="sex" />
+			<h:outputLabel for="sex" value="#{msg.sex}:" />
+			<p:selectOneRadio value="#{regMBean.gender}" id="sex">
+				<f:selectItem itemLabel="#{msg.male}" itemValue="M" />
+				<f:selectItem itemLabel="#{msg.female}" itemValue="F" />
+			</p:selectOneRadio>
+			<p:message for="sex" />
 
-				<h:outputLabel for="login" value="#{msg.login}:" class="required" />
-				<h:inputText id="login" value="#{regMBean.login}" required="true"
-					requiredMessage="#{msg.requiredField}" autocomplete="off" />
-				<p:message for="login" />
+			<h:outputLabel for="login" value="#{msg.login}:" class="required" />
+			<h:inputText id="login" value="#{regMBean.login}" required="true"
+				requiredMessage="#{msg.requiredField}" autocomplete="off" />
+			<p:message for="login" />
 
-				<h:outputLabel for="password" value="#{msg.password}:"
-					class="required" />
-				<h:inputSecret value="#{regMBean.password}" id="password"
-					required="true" requiredMessage="#{msg.requiredField}"
-					label="password" />
-				<p:message for="password" />
+			<h:outputLabel for="password" value="#{msg.password}:"
+				class="required" />
+			<h:inputSecret value="#{regMBean.password}" id="password"
+				required="true" requiredMessage="#{msg.requiredField}"
+				label="password" />
+			<p:message for="password" />
 
-				<h:outputLabel for="confirmPassword" value="#{msg.confirmPassword}:"
-					class="required" />
-				<h:inputSecret value="#{regMBean.confirmPassword}"
-					id="confirmPassword" required="true"
-					requiredMessage="#{msg.requiredField}" />
-				<p:message for="confirmPassword" />
+			<h:outputLabel for="confirmPassword" value="#{msg.confirmPassword}:"
+				class="required" />
+			<h:inputSecret value="#{regMBean.confirmPassword}"
+				id="confirmPassword" required="true"
+				requiredMessage="#{msg.requiredField}" />
+			<p:message for="confirmPassword" />
 
-				<h:outputLabel for="email" value="#{msg.email}:" class="required" />
-				<h:inputText value="#{regMBean.email}" id="email" required="true"
-					requiredMessage="#{msg.requiredField}" autocomplete="off" />
-				<p:message for="email" />
-			</h:panelGrid>
+			<h:outputLabel for="email" value="#{msg.email}:" class="required" />
+			<h:inputText value="#{regMBean.email}" id="email" required="true"
+				requiredMessage="#{msg.requiredField}" autocomplete="off" />
+			<p:message for="email" />
+		</h:panelGrid>
 
-			<f:facet name="footer">
-				<p:commandButton id="registerButton" value="#{msg.register}"
-					actionListener="#{regMBean.register}" update="regGrid" />
-				<p:commandButton value="#{msg.cancel}" style='float:right;'
-					immediate='true' onclick="regDlg.hide();">
-				</p:commandButton>
-			</f:facet>
-		</p:dialog>
-	</ui:composition>
+		<f:facet name="footer">
+			<p:commandButton id="registerButton" value="#{msg.register}"
+				actionListener="#{regMBean.register}" update="regGrid" />
+			<p:commandButton value="#{msg.cancel}" style='float:right;'
+				immediate='true' actionListener="#{regMBean.cancel}"
+				oncomplete="regDlg.hide();">
+			</p:commandButton>
+		</f:facet>
+	</p:dialog>
+</ui:composition>
 
 </h:body>
 
