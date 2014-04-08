@@ -11,6 +11,7 @@
 <ui:composition>
 	<p:dialog id="loginDialog" modal="true" header="#{msg.enter}"
 			widgetVar="loginDlg" resizable="false">
+		<p:ajax event="close" update="logGrid" resetValues="true" />
 		<h:panelGrid id="logGrid" columns="3" cellpadding="5">
 			<h:outputLabel for="username" value="#{msg.login}:" />
 			<h:inputText value="#{loginMBean.username}" id="username"
